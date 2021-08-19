@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/computer-network.iml" filepath="$PROJECT_DIR$/.idea/computer-network.iml" />
-      <module fileurl="file://$PROJECT_DIR$/javaweb/javaweb.iml" filepath="$PROJECT_DIR$/javaweb/javaweb.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaweb/javaweb-01-maven/javaweb-01-maven.iml" filepath="$PROJECT_DIR$/javaweb/javaweb-01-maven/javaweb-01-maven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaweb/servlet.iml" filepath="$PROJECT_DIR$/javaweb/servlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servlet/servlet-01/servlet-01.iml" filepath="$PROJECT_DIR$/servlet/servlet-01/servlet-01.iml" />
     </modules>
   </component>
 </project>

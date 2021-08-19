@@ -375,7 +375,173 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 
 在 setting.xml 中将镜像 url 中的 http 改为 https
 
++ 项目创建之后
+
+本地仓库会多一堆东西
+
+![img_2.png](img_2.png)
+
++ 添加 web 模板
+
+![img_3.png](img_3.png)
+
+![img_4.png](img_4.png)
 
 
++ 配置 tomcat
+
+![img_5.png](img_5.png)
 
 
++ 启动
+
+bug：
+```
+类型 状态报告
+消息 请求的资源[/weiyupeng-01/]不可用
+描述 源服务器未能找到目标资源的表示或者是不愿公开一个已经存在的资源表示。
+```
+
+目录结构不对，web 文件夹是和 src 平起平坐的
+
+### 5.6 pom.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--头文件-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--GAV-->
+    <groupId>cn.weiyupeng</groupId>
+    <artifactId>javaweb</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <modules>
+        <module>javaweb-01-maven</module>
+    </modules>
+
+    <!--配置-->
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <!--依赖-->
+    <dependencies>
+
+    </dependencies>
+    
+    <!--构建用的，比如插件就在这里边-->
+    <build>
+            
+    </build>
+</project>
+```
+
+maven 会帮我们导入所依赖的所有 jar 包
+
+```xml
+<build>
+        <!-- 在 build 中配置 resources，来防止资源导出失败的问题 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/*.properties</exclude>
+                    <exclude>**/*.xml</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.properties</exclude>
+                    <exclude>**/*.xml</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+```
+
+### 6 Servlet
+
+### 6.1 what
+
++ sun 公司开发动态 web 的一门技术
+
+
++ sun 公司在这些 API 中提供一个接口叫 Servlet，使用它需要两步
+  + 实现 Servlet 接口
+  + 部署到 web 服务器中
+  
+
+### 6.2 Hello Servlet
+
+1. 构建一个 maven 项目，导入依赖
+
+```xml
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.1</version>
+            <scope>provided</scope>
+        </dependency>
+```
+
+2. 再建项目可以建子项目 module，继承了 parent 项目的 pom
+
+
+新建项目时的 bug：
+```bash
+[ERROR] Error executing Maven.
+[ERROR] 2 problems were encountered while building the effective settings
+[FATAL] Non-parseable settings D:\apache-maven-3.8.2\conf\settings.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</url>\r\n    </mirror>-->\r\n    <m... @183:7)  @ D:\apache-maven-3.8.2\conf\settings.xml, line 183, column 7
+[FATAL] Non-parseable settings D:\apache-maven-3.8.2\conf\settings.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</url>\r\n    </mirror>-->\r\n    <m... @183:7)  @ D:\apache-maven-3.8.2\conf\settings.xml, line 183, column 7
+```
+解决：按 FATAL 提示，发现配置 mirror 时有语法错误
+
+
+3. 父项目多了
+
+```xml
+    <modules>
+        <module>javaweb-01-maven</module>
+        <module>servlet-01</module>
+    </modules>
+```
+4. 子项目多了
+```xml
+    <parent>
+        <artifactId>servlet</artifactId>
+        <groupId>cn.weiyupeng</groupId>
+        <version>1.0</version>
+    </parent>
+```
+
+5. 手动添加目录
+
+![img_6.png](img_6.png)
+
+这也太智能了
+
+![img_8.png](img_8.png)
+
+![img_7.png](img_7.png)
+
+
+6. 编写一个 Servlet
+    1. 创建一个类
+    2. 继承 HttpServlet: 抽象类 HttpServlet => 抽象类 GenericServlet => 接口 Servlet

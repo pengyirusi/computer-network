@@ -7,11 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="javaweb-01-maven" />
+        <module name="servlet-01" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="javaweb" target="8" />
       <module name="javaweb-01-maven" target="8" />
+      <module name="javaweb-02-servlet" target="8" />
+      <module name="servlet" target="8" />
+      <module name="servlet-01" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
