@@ -3,4 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!--注册-->
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>cn.weiyupeng.servlet.HelloServlet</servlet-class>
+    </servlet>
+    <!--配置映射-->
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <!--404-->
+    <servlet>
+        <servlet-name>error</servlet-name>
+        <servlet-class>cn.weiyupeng.servlet.ErrorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

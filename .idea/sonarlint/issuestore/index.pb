@@ -5,7 +5,29 @@ T
 $.idea/codeStyles/codeStyleConfig.xml,d\d\dd7b3350c29c49497756c7f32c69a3bed18b1cba
 L
 .idea/codeStyles/Project.xml,6\e\6ecd6000a7b6f4a2884412ff19f74193ed089648
+V
+&servlet/javaweb-01-maven/web/index.jsp,8\9\89672e807ab4322bacd9d1c77c6b6a28370ccb95
+a
+1.idea/artifacts/javaweb_01_maven_war_exploded.xml,2\1\21bfa56592477cf8c1bb6782fe27dc6b1e98d652
+p
+@.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml,1\8\18d87c86530683a959e5e5498382978a7dfbcd24
+x
+H.idea/libraries/Maven__javax_servlet_jsp_javax_servlet_jsp_api_2_3_1.xml,6\2\62e1f07a1c16272d6f23ff6525024af758ed6ac9
+]
+-.idea/libraries/Maven__junit_junit_4_13_2.xml,5\4\54f4510b91c2683595ce2e8f36b90b301f51d8d3
+x
+H.idea/libraries/Maven__org_apache_isis_viewer_junit_0_2_0_incubating.xml,e\a\eaed11315f5d648d53739b9d383cfe1ca42eb21e
+i
+9.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml,b\8\b8d96649614bd84192f3496ef7d33bab1d1e5ec1
+P
+ servlet/javaweb-01-maven/pom.xml,3\c\3c3aa37400f198a00fe31fd0c04e0ff6ba5a99b5
+Q
+!servlet/servlet-01/servlet-01.iml,5\2\52464901e1d84f8e38c363eba71cc6688b1f0bc2
+[
++.idea/artifacts/servlet_01_war_exploded.xml,6\c\6c1d57a02299b2859016000f8668648ff4d8c71b
 \
-,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
-C
-javaweb/javaweb.iml,1\9\1927a5d364ebabdf481185d2b4d9a5218cbf9205
+,servlet/javaweb-01-maven/web/WEB-INF/web.xml,8\0\8068a4fb42c9dc895e7a79d0548d61c454cc28dc
+\
+,servlet/servlet-01/src/main/webapp/index.jsp,0\1\015f83852698033448b7d4736094d45abefab487
+J
+servlet/servlet-01/pom.xml,1\4\14766764bb2a28625c90b977a67952923bfe1501

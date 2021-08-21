@@ -11,6 +11,10 @@
     <modules>
         <module>javaweb-01-maven</module>
         <module>servlet-01</module>
+        <module>servlet-02</module>
+        <module>response</module>
+        <module>request</module>
+        <module>cookie</module>
     </modules>
 
     <properties>
@@ -46,7 +50,8 @@
 
     <build>
         <!-- 在 build 中配置 resources，来防止资源导出失败的问题 -->
-        <resources>
+        <!-- 约定大于配置！ 正常都有过滤器，不用写这段代码！ -->
+        <!--<resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <excludes>
@@ -63,7 +68,7 @@
                 </excludes>
                 <filtering>false</filtering>
             </resource>
-        </resources>
+        </resources>-->
     </build>
 
 </project>

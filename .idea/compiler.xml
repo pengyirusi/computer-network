@@ -6,15 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="javaweb-01-maven" />
+        <module name="servlet-02" />
+        <module name="request" />
         <module name="servlet-01" />
+        <module name="javaweb-01-maven" />
+        <module name="cookie" />
+        <module name="response" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cookie" target="8" />
       <module name="javaweb-01-maven" target="8" />
       <module name="javaweb-02-servlet" target="8" />
+      <module name="request" target="1.8" />
+      <module name="response" target="8" />
       <module name="servlet" target="8" />
       <module name="servlet-01" target="8" />
+      <module name="servlet-02" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

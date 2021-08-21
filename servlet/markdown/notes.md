@@ -545,3 +545,301 @@ maven 会帮我们导入所依赖的所有 jar 包
 6. 编写一个 Servlet
     1. 创建一个类
     2. 继承 HttpServlet: 抽象类 HttpServlet => 抽象类 GenericServlet => 接口 Servlet
+    3. 重写方法 doGet doPost
+    
+```java
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter writer = resp.getWriter(); // 响应流
+        writer.print("Hello Servlet");
+    }
+```
+
+7. 编写 Servlet 的映射
+
+为什么需要映射：我们写的是 JAVA 程序，但是要通过浏览器访问，而浏览器需要连接web服务器，所以我们需要再web服务中注册我们写的 Servlet，还需给他一个浏览器能够访问的路径
+
+在 web.xml 中配置映射
+```xml
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>cn.weiyupeng.servlet.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+```
+
+8. 配置 tomcat
+
+![img_9.png](img_9.png)
+
+9. 启动测试
+
+主页正常
+
+![img_10.png](img_10.png)
+
+但是访问 http://localhost:8080/servlet_01_war_exploded/hello 时，
+实例化Servlet类[cn.weiyupeng.servlet.HelloServlet]异常
+
+原因：Tomcat 和 Servlet 版本不对应
+
+![img_11.png](img_11.png)
+
+解决：将 tomcat 换成 9 
+
+![img_12.png](img_12.png)
+
+控制台打印出：
+
+```bash
+this is doGet method
+```
+
+浏览器响应：
+```bash
+HTTP/1.1 200
+Content-Length: 13
+Date: Sat, 21 Aug 2021 01:17:58 GMT
+Keep-Alive: timeout=20
+Connection: keep-alive
+```
+
+### 6.3 运行原理
+
+Servlet 是由 web 服务器调用，web 服务器在收到浏览器请求之后
+
+![img_13.png](img_13.png)
+
+### 6.4 Mapping
+
+1. 一个 Servlet 可以指定一个或多个 Mapping
+
+2. Mapping 里可以写正则，比如 `*` `**/*` `*.weiyupeng`，注意：`*` 前边不能加任何路径，`/` 也不行
+
+3. 优先级：优先找固定的绝对路径，找不到再走默认
+
+```xml
+    <!--404-->
+    <servlet>
+        <servlet-name>error</servlet-name>
+        <servlet-class>cn.weiyupeng.servlet.ErrorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+```
+
+### 6.5 ServletContext
+
+web 容器在启动的时候，会为每个 web 程序都创建一个 ServletContext 对象，它代表了当前的 web 应用
+
+ServletContext 是全局的，一个 web 里只有一个 ServletContext
+
+![img_16.png](img_16.png)
+
+1. 共享数据
+
+在一个 Servlet 的数据能被另一个 Servlet 访问
+
+代码：servlet-02 中的 HelloServlet 和 GetServlet
+
+![img_14.png](img_14.png)
+
+执行 Hello 的 get 操作之后
+
+![img_15.png](img_15.png)
+
+2. 获取初始化参数
+
+```xml
+    <!--配置 web 的初始化参数-->
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/mybatis</param-value>
+    </context-param>
+```
+
+代码：servlet-02 中的 ServletDemo03
+
+```xml
+    <servlet>
+        <servlet-name>getParam</servlet-name>
+        <servlet-class>cn.weiyupeng.servlet.ServletDemo03</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getParam</servlet-name>
+        <url-pattern>/getParam</url-pattern>
+    </servlet-mapping>
+```
+
+![img_17.png](img_17.png)
+
+
+3. 请求转发
+
+代码：servlet-02 中的 ServletDemo04
+
+getRequestDispatcher 转发后，路径不变，但页面变了
+
+
+4. 读取资源文件
+
+Properties
+
+在 java 目录和 resources 目录下新建 properties，都被打包到同一个路径下 classes，俗称 classpath
+
+资源：resources/db.properties
+
+代码：servlet-02 中的 ServletDemo05
+
+```java
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    ServletContext servletContext = this.getServletContext();
+    InputStream resourceAsStream = servletContext.getResourceAsStream("WEB-INF/classes/db.properties"); // 得到文件流
+    Properties properties = new Properties();
+    properties.load(resourceAsStream);
+    String userName = properties.getProperty("username");
+    String password = properties.getProperty("password");
+
+    resp.getWriter().print("user: " + userName + ", pwd: " + password);
+}
+```
+
+### 6.6 HttpServletResponse
+
+web 服务器接收到客户端的 http 请求，针对这个请求分别创建一个代表请求的 HttpServletRequest 对象和代表响应的一个 HttpServletResponse 对象
+
++ 如果要获取客户端请求过来的参数：找 HttpServletRequest
+
++ 如果给客户端一些响应：找 HttpServletResponse
+
+
++ 里边的内容包括
+
+1. 负责向浏览器发送数据的方法
+```java
+ServletOutPutStream getOutPutStream();
+PrintWriter getWriter();
+```
+2. 负责向浏览器发送响应头的方法
+```java
+void setCharacterEncoding(string var1);
+void setContentLength(int var1) ;
+void setContentLengthLong(long var1) ;
+void setContentType(String var1);
+void setDateHeader(String var1， Long var2) ;
+void addDateHeader(String var1，Long var2) ;
+void setHeader(String var1，String var2);
+void addHeader(String var1，String var2);
+void setIntHeader(String var1, int var2);
+void addIntHeader(String var1,int var2);
+```
+3. 状态码 ~ 从 100 到 505
+
+
++ 常见应用
+
+1. 向浏览器输出消息
+       
+2. 下载文件 代码：response 中的 FileServlet
+    1. 要下载文件的 path
+    2. 想办法让浏览器支持下载我们需要的东西
+    3. 获取下载文件的输入流
+    4. 创建缓冲区
+    5. 获取 OutPutStream 对象
+    6. 将 FileOutPutStream 写入到 buffer 缓冲区
+    7. 使用 OutPutStream 将缓冲区中的数据输出到客户端
+    
+3. 验证码功能
+
++ 前端实现
+
++ 后端实现：需要用到 Java 图片类，生产一个图片
+
+
+4. 实现重定向
+
+一句话：`resp.sendRedirect("/response_war_exploded/image");`，相当于
+![img_19.png](img_19.png)
+
+![img_18.png](img_18.png)
+
+重定向与转发？
+```bash
+相同点: 页面都会实现跳转
+不同点: 重定向时 URL 会发生变化
+```
+
+### 6.7 HttpServletRequest
+
+HttpServletRequest 代表客户端的请求，用户通过 http 访问服务器，http 请求中的所有信息会被封装到这里
+
+HttpServletRequest 有一堆 getXxx 方法，通过这些方法获取请求的信息
+
+
+```java
+// 处理请求
+String username = req.getParameter("username");
+String password = req.getParameter("password");
+System.out.println(username + ": " + password);
+// 重定向时候一定要注意路径，否则 404
+resp.sendRedirect("/response_war_exploded/userProfile.jsp");
+```
+
++ 常见应用
+
+1. 获取前端传递的参数，请求转发
+
+代码：request 包中的 LoginServlet
+
+```bash
+Request URL: http://localhost:8080/request_war_exploded/login
+Request Method: POST
+Status Code: 200 
+Remote Address: [::1]:8080
+Referrer Policy: no-referrer-when-downgrade
+```
+
+2. 请求转发 & 重定向
+
+```bash
+相同点: 页面都会实现跳转
+不同点: 1.重定向 302 URL 会发生变化 2.转发 307 URL 不会发生变化
+```
+
+```java
+// 转发: 默认当前相对路径
+req.getRequestDispatcher("/success.jsp").forward(req, resp);
+// 重定向: 得写全了
+resp.sendRedirect(req.getContextPath() + "/success.jsp");
+```
+
+## 7 Cookie Session
+
+### 7.1 会话
+
+一次会话：用户打开一个浏览器，点击了很多链接，访问了多个 web 资源，关闭浏览器
+
+有状态会话：一个客户端访问服务端后，下次访问时服务端知道客户端是谁
+
+### 7.2 保存会话的两种方式
+
++ cookie
+
+客户端技术（响应，请求）
+
+
++ session
+
+服务器技术，可以保存用户的会话信息，把信息或数据放到 session 中
+
+
++ 常见场景：网站登录之后，你下次不用再登录了，第二次访问直接就能登上
+
+
+
+
