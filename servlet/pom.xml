@@ -15,6 +15,8 @@
         <module>response</module>
         <module>request</module>
         <module>cookie</module>
+        <module>filter</module>
+        <module>jdbc</module>
     </modules>
 
     <properties>

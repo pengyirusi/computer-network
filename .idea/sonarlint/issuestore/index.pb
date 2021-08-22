@@ -55,8 +55,6 @@ Z
 *servlet/response/src/main/webapp/index.jsp,7\5\758ac51339ff759143dd7b8626e52388bb021564
 \
 ,servlet/servlet-02/src/main/webapp/index.jsp,f\a\fa5492c8bb50007b85fc2a3a39a2e87112d98479
-]
--servlet/javaweb-01-maven/javaweb-01-maven.iml,9\1\91760e9a135172c44831b18fedda3aa7527ec0ac
 t
 Dservlet/request/src/main/java/cn/weiyupeng/servlet/LoginServlet.java,e\4\e45545a7e8303f3385c282a4e7016118dae15d1e
 F
@@ -67,8 +65,6 @@ H
 servlet/response/pom.xml,d\9\d97c54fea06a9d9f7bca7dfbc53d7c890c2f3693
 J
 servlet/servlet-02/pom.xml,f\6\f6196a9a33c7e477eec57149bdc1465d7870495a
-?
-servlet/pom.xml,9\3\93fb2c667c9837b7ef5a150b363c0c05f63901e8
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 |
@@ -113,3 +109,15 @@ b
 2servlet/servlet-01/src/main/webapp/WEB-INF/web.xml,a\7\a7355619bc4d5d7416f36b93a873e5cf9a43bfb5
 b
 2servlet/servlet-02/src/main/webapp/WEB-INF/web.xml,2\5\259e96cba3f493f471eaaf99bfa25c9a09da83cd
+X
+(servlet/cookie/src/main/webapp/index.jsp,b\2\b2991294fa3eec886c770e5f1e4774b0b33c5019
+s
+Cservlet/cookie/src/main/java/cn/weiyupeng/servlet/CookieDemo01.java,c\5\c53fd65faf5a2c0b77fe0097d7ac1e3afa346922
+X
+(servlet/cookie/src/main/webapp/hello.jsp,6\0\60acbd1761012a34e32087d4788e10aed0efd393
+p
+@servlet/cookie/src/main/java/cn/weiyupeng/servlet/index_jsp.java,7\b\7bbe5a60160bd8ab9ef5eca3354bbda1f30c07e8
+t
+Dservlet/cookie/src/main/java/cn/weiyupeng/servlet/SessionDemo01.java,3\d\3d218c8764fae505d0df3e9a96b59cd45d9eada1
+^
+.servlet/cookie/src/main/webapp/WEB-INF/web.xml,2\1\21c7ae0b38dc0e550a4a7e72e4d80bf18d912b53

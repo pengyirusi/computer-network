@@ -1,0 +1,15 @@
+
+J
+java:S1128"5Remove this unused import 'java.io.RandomAccessFile'.(‰ŽŒ)
+u
+java:S11498"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰
+z
+java:S1989"_Handle the following exceptions that could be thrown by "doGet": ServletException, IOException.(—ôÖ¢øÿÿÿÿ
+H
+java:S1905"-Remove this unnecessary cast to "Graphics2D".(âÓßçùÿÿÿÿ
+i
+java:S19890"LHandle the following exception that could be thrown by "write": IOException.(ÖÑ÷À8™© ½¶/
+s
+java:S19890"VHandle the following exception that could be thrown by "getOutputStream": IOException.(ÖÑ÷À8Ÿ‹Ÿ½¶/
+3
+java:S21196"Save and re-use this "Random".(¼ÝÅf

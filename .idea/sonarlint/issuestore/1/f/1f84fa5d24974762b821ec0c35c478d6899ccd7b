@@ -1,0 +1,4 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Ù¿éûÿÿÿÿ
+z
+java:S1989"_Handle the following exceptions that could be thrown by "doGet": ServletException, IOException.(—ôÖ¢øÿÿÿÿ

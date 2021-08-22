@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/computer-network.iml" filepath="$PROJECT_DIR$/.idea/computer-network.iml" />
       <module fileurl="file://$PROJECT_DIR$/servlet/cookie/cookie.iml" filepath="$PROJECT_DIR$/servlet/cookie/cookie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servlet/filter/filter.iml" filepath="$PROJECT_DIR$/servlet/filter/filter.iml" />
       <module fileurl="file://$PROJECT_DIR$/servlet/javaweb-01-maven/javaweb-01-maven.iml" filepath="$PROJECT_DIR$/servlet/javaweb-01-maven/javaweb-01-maven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servlet/jdbc/jdbc.iml" filepath="$PROJECT_DIR$/servlet/jdbc/jdbc.iml" />
       <module fileurl="file://$PROJECT_DIR$/servlet/request/request.iml" filepath="$PROJECT_DIR$/servlet/request/request.iml" />
       <module fileurl="file://$PROJECT_DIR$/servlet/response/response.iml" filepath="$PROJECT_DIR$/servlet/response/response.iml" />
       <module fileurl="file://$PROJECT_DIR$/servlet/servlet.iml" filepath="$PROJECT_DIR$/servlet/servlet.iml" />
