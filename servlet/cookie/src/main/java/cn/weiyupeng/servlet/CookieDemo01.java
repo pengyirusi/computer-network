@@ -51,6 +51,9 @@ public class CookieDemo01 extends HttpServlet {
 
             // 服务器给客户端响应一个 Cookie
             Cookie cookie = new Cookie("name", "weiyupeng");
+            // 设置有效期
+            cookie.setMaxAge(24*60*60);
+
             resp.addCookie(cookie);
         }
     }

@@ -12,4 +12,20 @@
         <servlet-name>cookie</servlet-name>
         <url-pattern>/cookie</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>session</servlet-name>
+        <servlet-class>cn.weiyupeng.servlet.SessionDemo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>session</servlet-name>
+        <url-pattern>/session1</url-pattern>
+    </servlet-mapping>
+
+    <!--设置 Session 默认失效时间-->
+    <session-config>
+        <!-- 15min 后 Session 失效 -->
+        <session-timeout>15</session-timeout>
+    </session-config>
+
 </web-app>

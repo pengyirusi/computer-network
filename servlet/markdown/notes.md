@@ -832,13 +832,128 @@ resp.sendRedirect(req.getContextPath() + "/success.jsp");
 
 客户端技术（响应，请求）
 
+从请求中拿到 cookie，服务器响应给客户端 cookie
 
+代码：cookie 包中的 CookieDemo01
+
+cookie 一般会保存在本地的用户目录下
+
++ 删除 cookie：
+    1. 不设置有效期，关闭浏览器自动失效
+    2. 设置有效时间为 0（其实默认就是 -1）
+    
+
++ 编码解码（解决乱码）
+```java
+URLEncoder.encode("魏宇鹏", "utf-8");
+URLDecoder.decode(cookie.getValue, "utf-8");
+```
 + session
 
 服务器技术，可以保存用户的会话信息，把信息或数据放到 session 中
 
+服务器会为每一个用户创建一个 session 对象
 
-+ 常见场景：网站登录之后，你下次不用再登录了，第二次访问直接就能登上
+一个 session 独占一个浏览器，只要浏览器没有关闭，这个 session 就存在
+
+用户登录之后，整个网站都可以访问了
+
+使用场景：1.网站登录之后，你下次不用再登录了，第二次访问直接就能登上
+2.在网站中经常使用的数据，放在 Session 中，不用来回取了
+3.购物车信息
+
+代码：cookie 包中的 SessionDemo01
+
+第一次进
+![img_22.png](img_22.png)
+![img_21.png](img_21.png)
+![img_20.png](img_20.png)
+
+第二次进
+![img_23.png](img_23.png)
+![img_24.png](img_24.png)
+![img_25.png](img_25.png)
+
++ session 可以跨 Servlet，在一个 web 应用里共享
+
+
++ 删除与注销（注销==关闭浏览器）
+```java
+session.removeAttribute("name");
+session.invalidate(); // 手动注销
+```
+
+```xml
+    <!--设置 Session 默认失效时间-->
+    <session-config>
+        <!-- 15min 后 Session 失效（单位是分钟！） -->
+        <session-timeout>15</session-timeout>
+    </session-config>
+```
+
+## 8 JSP
+
+jsp 页面可以嵌入 java 代码，所以可以为用户提供动态数据
+
+D:\apache-tomcat-10.0.10\work\Catalina\localhost\ROOT\org\apache\jsp
+![img_26.png](img_26.png)
+
+代码：cookie 包中的 index_jsp.java
+
+jsp 最终会被转换为 java 类
+
+jsp 本质上就是继承 Servlet，帮助程序员封装了一堆东西，真 · 简单！
+
+
+![img_27.png](img_27.png)
+
+[JSP教程 - 查字典](https://www.runoob.com/jsp/jsp-tutorial.html)
+
+```html
+<body>
+    <%
+        String name = "weiyupeng";
+    %>
+    name: <%=name%>
+</body>
+```
+这段代码，相当于 new 了一个 Servlet，并用 out.write() 写了出来
+
+![img_28.png](img_28.png)
+
+查看自动生成的 java 文件 C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea2021.1\tomcat\19d17601-13ba-47fc-a951-2193a5f8cb85\work\Catalina\localhost\cookie_war_exploded\org\apache\jsp\hello_jsp.java
+
+![img_29.png](img_29.png)
+
+## 9 JavaBean
+
+实体类
+
++ 特定的写法
+    + 必须有一个无参构造
+    + 属性必须私有化
+    + 有对应的 get set 方法
+    + 一般和数据库做映射
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
